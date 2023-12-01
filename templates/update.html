@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+<title>Users List</title>
+
+{% endblock title %}
+
+{% block content %}
+
+<h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;">Edit User Information</h1>
+
+<form action="{% url 'update_user' user.pk %}" method="post">
+
+    {% csrf_token %}
+
+    {{form.as_p}}
+    
+    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+</form>
+{% for message in messages %}
+<div class="form-text text-center mt-3 text-danger"><strong>{{message}}</strong></div>
+{% endfor %}
+
+{% endblock content %}
